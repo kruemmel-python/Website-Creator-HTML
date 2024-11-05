@@ -2,7 +2,7 @@
 
 # Webseiten Generator mit CSS, JSON und HTML5
 
-Dieses Projekt ist ein GUI-basierter Webseiten-Generator, der es Benutzern ermöglicht, individuelle Webseiten mit CSS-, HTML- und JavaScript-Dateien zu erstellen. Der Generator bietet eine grafische Benutzeroberfläche, über die verschiedene Seitenlayouts (z.B. Hotel, Business, Immobilien) konfiguriert und generiert werden können. Die Konfigurationen können in JSON-Dateien gespeichert und wieder geladen werden.
+Dieses Projekt ist ein GUI-basierter Webseiten-Generator, der es Benutzern ermöglicht, individuelle Webseiten mit CSS-, HTML- und JavaScript-Dateien zu erstellen. Der Generator bietet eine grafische Benutzeroberfläche, über die verschiedene Seitenlayouts konfiguriert und generiert werden können. Die Konfigurationen können in JSON-Dateien gespeichert und wieder geladen werden.
 
 ## Inhaltsverzeichnis
 
@@ -39,7 +39,7 @@ Dieses Projekt ist ein GUI-basierter Webseiten-Generator, der es Benutzern ermö
    
 2. Navigieren Sie in das Projektverzeichnis:
     ```bash
-    cd webseiten-generator
+    cd Website-Creator-HTML
     ```
 
 3. Installieren Sie eventuell benötigte Abhängigkeiten:
