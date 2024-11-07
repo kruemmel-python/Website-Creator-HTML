@@ -3,7 +3,7 @@ def generate_header_html(menu_type):
     if menu_type == "header":
         return '''
 <header class="header">
-    <h1>Über mich</h1>
+    <h1>Hotel Template</h1>
     <nav class="menu" id="nav">
         <ul></ul>
     </nav>
@@ -12,7 +12,7 @@ def generate_header_html(menu_type):
     else:
         return '''
 <header class="header">
-    <h1>Über mich</h1>
+    <h1>Hotel Template</h1>
 </header>
 <nav class="menu" id="nav">
     <ul></ul>
@@ -30,7 +30,7 @@ def generate_footer_html():
     """Generiert den HTML-Code für den Footer."""
     return '''
 <footer class="footer">
-    <p>&copy; 2023 Persönliche Webseite. Alle Rechte vorbehalten.</p>
+    <p>&copy; 2023 Hotel Template. All rights reserved.</p>
 </footer>
 '''
 
@@ -46,18 +46,18 @@ def generate_hotel_html(menu_type, menu_items, menu_names, submenu_names):
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Über mich</title>
-    <link rel="stylesheet" href="index_styles.css">
+    <title>Hotel Template</title>
+    <link rel="stylesheet" href="hotel_styles.css">
     <script src="animations.js"></script>
 </head>
 <body>
 
     {header_html}
-    <main {main_style}>
+    <main class="content" {main_style}>
         <section class="section">
-            <h1>Willkommen auf meiner persönlichen Seite</h1>
-            <p>Hallo! Mein Name ist [Dein Name] und ich freue mich, dass du hier bist. Diese Webseite bietet dir einen Einblick in meine Interessen, Projekte und meinen beruflichen Werdegang.</p>
-            <p>Du kannst den Titel und Inhalt dieser Seite direkt im Code ändern, um ihn an deine Bedürfnisse anzupassen.</p>
+            <h1>Welcome to Our Stunning Hotel</h1>
+            <p>Enjoy luxurious rooms with breathtaking views and world-class amenities.</p>
+            <button class="button" onclick="fadeInText()">Check available rooms</button>
         </section>
     </main>
 

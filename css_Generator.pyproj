@@ -23,16 +23,19 @@
   <ItemGroup>
     <Compile Include="css_generator.py" />
     <Compile Include="generator.py" />
-    <Compile Include="hotel.html" />
     <Compile Include="main.py" />
     <Compile Include="modules\css\business_css.py" />
     <Compile Include="modules\css\hotel_css.py" />
     <Compile Include="modules\css\real_estate_css.py" />
+    <Compile Include="modules\fussbereich.py" />
+    <Compile Include="modules\hauptinhalt.py" />
     <Compile Include="modules\html\business_html.py" />
     <Compile Include="modules\html\hotel_html.py" />
     <Compile Include="modules\html\real_estate_html.py" />
     <Compile Include="modules\js\business_js.py" />
     <Compile Include="modules\js\hotel_js.py" />
+    <Compile Include="modules\kopfbereich.py" />
+    <Compile Include="modules\seitenmenue.py" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="modules\" />

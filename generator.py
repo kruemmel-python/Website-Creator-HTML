@@ -3,32 +3,17 @@ import os
 from modules.css.hotel_css import generate_hotel_css
 from modules.html.hotel_html import generate_hotel_html
 from modules.js.hotel_js import generate_hotel_js
-import re
 
 def create_directory(path):
     """Erstellt ein Verzeichnis, falls es nicht existiert."""
     os.makedirs(path, exist_ok=True)
 
-def sanitize_filename(filename):
-    """Entfernt alle Zeichen außer alphanumerische Zeichen und Unterstriche, lässt den letzten Punkt vor der Dateierweiterung intakt."""
-    # Trenne den Dateinamen von der Erweiterung
-    name, ext = os.path.splitext(filename)
-    # Bereinige den Namen, aber behalte den letzten Punkt und die Erweiterung bei
-    sanitized_name = re.sub(r'[^a-zA-Z0-9_]', '', name)
-    return f"{sanitized_name}{ext}"
-
 def write_file(path, content):
-    """Schreibt den Inhalt in eine Datei und stellt sicher, dass nur der Dateiname bereinigt wird."""
-    # Extrahiert den Ordner und den Dateinamen separat
-    folder, filename = os.path.split(path)
-    sanitized_filename = sanitize_filename(filename)
-    sanitized_path = os.path.join(folder, sanitized_filename)
-
-    # Schreibt die Datei in den bereinigten Pfad
-    with open(sanitized_path, "w", encoding="utf-8") as file:
+    """Schreibt Inhalt in eine Datei."""
+    with open(path, "w", encoding="utf-8") as file:
         file.write(content)
 
-def generate_submenu_html(template_name, submenu_name):
+def generate_submenu_html(template_name, submenu_name, options):
     """Generiert HTML-Inhalt für eine Untermenüseite."""
     return f'''<!DOCTYPE html>
 <html lang="de">
@@ -53,6 +38,10 @@ def generate_submenu_html(template_name, submenu_name):
             <p>This is the page for {submenu_name}. Enjoy exploring our exclusive offerings and amenities.</p>
         </section>
     </main>
+
+    <footer style="background-color: {options['footer_background_color']}; color: {options['footer_text_color']}; font-family: {options['footer_font_family']}; font-size: {options['footer_font_size']}px; padding: 1rem; text-align: {options['footer_text_align']}; margin-top: auto;">
+        <p>&copy; 2023 Hotel. All rights reserved.</p>
+    </footer>
 
     <script src="load_menu.js"></script>
 </body>
@@ -80,8 +69,8 @@ def generate_template(template_name, options):
     # Generiere eine HTML-Seite für jeden Untermenüpunkt, die das Menü und alle Funktionen übernimmt
     for i, submenu_list in enumerate(options["submenu_names"]):
         for submenu_name in submenu_list:
-            submenu_html_content = generate_submenu_html(template_name, submenu_name)
-            submenu_path = os.path.join(template_folder, f"{sanitize_filename(submenu_name.replace(' ', '_'))}.html")
+            submenu_html_content = generate_submenu_html(template_name, submenu_name, options)
+            submenu_path = os.path.join(template_folder, f"{submenu_name.replace(' ', '_')}.html")
             write_file(submenu_path, submenu_html_content)
 
     # Generiere nav.json für das Menü
@@ -89,8 +78,8 @@ def generate_template(template_name, options):
         "menuItems": [
             {
                 "title": options["menu_names"][i],
-                "url": f"{sanitize_filename(options['menu_names'][i].replace(' ', '_'))}.html",
-                "subMenu": [{"title": submenu, "url": f"{sanitize_filename(submenu.replace(' ', '_'))}.html"} for submenu in submenu_list]
+                "url": f"{options['menu_names'][i].replace(' ', '_')}.html",
+                "subMenu": [{"title": submenu, "url": f"{submenu.replace(' ', '_')}.html"} for submenu in submenu_list]
             }
             for i, submenu_list in enumerate(options["submenu_names"])
         ]
