@@ -1,8 +1,8 @@
----
+# CipherCore Website Generator
 
-# Webseiten Generator mit CSS, JSON und HTML5
+## Überblick
 
-Dieses Projekt ist ein GUI-basierter Webseiten-Generator, der es Benutzern ermöglicht, individuelle Webseiten mit CSS-, HTML- und JavaScript-Dateien zu erstellen. Der Generator bietet eine grafische Benutzeroberfläche, über die verschiedene Seitenlayouts konfiguriert und generiert werden können. Die Konfigurationen können in JSON-Dateien gespeichert und wieder geladen werden.
+Dieses Projekt ist ein CipherCore Website Generator, der es Benutzern ermöglicht, maßgeschneiderte HTML-, CSS- und JavaScript-Dateien für eine Website zu erstellen. Das Programm bietet eine grafische Benutzeroberfläche (GUI) zur Konfiguration verschiedener Bereiche der Website, einschließlich Kopfbereich, Seitenmenü, Hauptinhalt und Fußbereich.
 
 ## Inhaltsverzeichnis
 
@@ -17,12 +17,12 @@ Dieses Projekt ist ein GUI-basierter Webseiten-Generator, der es Benutzern ermö
 
 ## Features
 
-- **Seitenvorlagen**: Unterstützung für verschiedene Arten von Seitenvorlagen (Hotel, Business, Immobilien).
-- **Menü-Generator**: Erstellen Sie benutzerdefinierte Menüs mit beliebig vielen Untermenüpunkten.
-- **Farbanpassung**: Definieren Sie Farben für Hintergrund, Text, Header, Menü und Footer.
-- **Schriftart und -größe**: Wählen Sie Schriftarten und Schriftgrößen für verschiedene Bereiche der Seite.
-- **JSON-Konfiguration**: Speichern und laden Sie Design-Einstellungen für wiederverwendbare Designs.
-- **Automatisierte Generierung**: Erzeugt vollständige HTML-, CSS- und JavaScript-Dateien für das ausgewählte Template.
+- **Kopfbereich**: Konfiguration von Hintergrundfarbe, Textfarbe, Schriftart, Schriftgröße und Textausrichtung. Vor dem Übernehmen der Änderungen kann eine Vorschau in einem Webview-Fenster angezeigt werden.
+- **Seitenmenü**: Konfiguration von Hintergrundfarbe, Textfarbe, Schriftart, Schriftgröße und Textausrichtung. Vor dem Übernehmen der Änderungen kann eine Vorschau in einem Webview-Fenster angezeigt werden.
+- **Hauptinhalt**: Konfiguration von Hintergrundfarbe, Textfarbe, Schriftart, Schriftgröße und Textausrichtung. Vor dem Übernehmen der Änderungen kann eine Vorschau in einem Webview-Fenster angezeigt werden.
+- **Fußbereich**: Konfiguration von Hintergrundfarbe, Textfarbe, Schriftart, Schriftgröße und Textausrichtung. Vor dem Übernehmen der Änderungen kann eine Vorschau in einem Webview-Fenster angezeigt werden.
+- **Einstellungen speichern und laden**: Speichern und Laden der Konfigurationseinstellungen in einer JSON-Datei. Dies sorgt dafür, dass eigene Templates gespeichert und später wieder geladen werden können.
+- **Template-Generierung**: Erstellung eines vollständigen Templates mit HTML-, CSS- und JavaScript-Dateien basierend auf den Benutzereingaben.
 
 ## Installation
 
@@ -34,12 +34,12 @@ Dieses Projekt ist ein GUI-basierter Webseiten-Generator, der es Benutzern ermö
 
 1. Klonen Sie das Repository:
     ```bash
-    git clone https://github.com/kruemmel-python/Website-Creator-HTML.git
+    git clone https://github.com/dein-benutzername/ciphercore-website-generator.git
     ```
-   
+
 2. Navigieren Sie in das Projektverzeichnis:
     ```bash
-    cd Website-Creator-HTML
+    cd ciphercore-website-generator
     ```
 
 3. Installieren Sie eventuell benötigte Abhängigkeiten:
@@ -52,14 +52,11 @@ Dieses Projekt ist ein GUI-basierter Webseiten-Generator, der es Benutzern ermö
     python main.py
     ```
 
-![image](https://github.com/user-attachments/assets/8865f1dd-ce44-490d-b204-739b43f89e6c)
+![image](https://github.com/user-attachments/assets/6e38acd7-ef32-4e46-baf2-095a73bc9652)
 
+![image](https://github.com/user-attachments/assets/f48e0d03-5fed-47b9-a657-ce32157e07a9)
 
-
-![image](https://github.com/user-attachments/assets/c4d9ecab-629b-4612-9c6b-a199ee86eba2)
-
-
-![image](https://github.com/user-attachments/assets/5111b61d-3475-4d6d-8f2f-8780f2329a17)
+![image](https://github.com/user-attachments/assets/da07ea1c-b0d7-4bbe-953d-56aafd1ad1cd)
 
 
 
@@ -121,32 +118,30 @@ Die generierten Dateien umfassen HTML, CSS und JavaScript. Hier ist ein Beispiel
 Die Projektstruktur gliedert sich in verschiedene Module für die Generierung von CSS, HTML und JavaScript-Dateien für die einzelnen Vorlagen:
 
 ```
-webseiten-generator/
+ciphercore-website-generator/
 │
-├── modules/                   # Module für die verschiedenen Vorlagen
-│   ├── css/                   # CSS-Generatoren
-│   │   ├── business_css.py
-│   │   ├── hotel_css.py
-│   │   └── real_estate_css.py
-│   │
-│   ├── html/                  # HTML-Generatoren
-│   │   ├── business_html.py
-│   │   ├── hotel_html.py
-│   │   └── real_estate_html.py
-│   │
-│   └── js/                    # JavaScript-Generatoren
-│       ├── animations.js      # Gemeinsame JS-Animationen
-│       ├── business_js.py
+├── main.py
+├── generator.py
+├── modules/
+│   ├── kopfbereich.py
+│   ├── seitenmenue.py
+│   ├── hauptinhalt.py
+│   ├── fussbereich.py
+│   ├── css/
+│   │   └── hotel_css.py
+│   ├── html/
+│   │   └── hotel_html.py
+│   └── js/
 │       └── hotel_js.py
-│
-├── templates/                 # Generierte Templates
-│   ├── business/              # Business-Vorlagen
-│   ├── hotel/                 # Hotel-Vorlagen
-│   └── real_estate/           # Immobilien-Vorlagen
-│
-├── css_generator.py           # Modul zur CSS-Generierung
-├── generator.py               # Hauptmodul zur Template-Generierung
-└── main.py                    # Hauptanwendung mit der GUI
+├── templates/
+│   └── hotel/
+│       ├── hotel_styles.css
+│       ├── hotel.html
+│       ├── animations.js
+│       ├── nav.json
+│       └── ... (weitere Untermenü-HTML-Dateien)
+├── requirements.txt
+└── README.md
 ```
 
 ### Modulbeschreibung
@@ -173,3 +168,8 @@ webseiten-generator/
 
 Dieses Projekt steht unter der MIT-Lizenz. Weitere Informationen finden Sie in der [LICENSE](LICENSE)-Datei.
 
+## Kontakt
+
+Für Fragen oder Anregungen kontaktieren Sie bitte [Ihren Namen](mailto:ihre-email@example.com).
+
+---
