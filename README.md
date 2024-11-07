@@ -1,8 +1,12 @@
+Danke für die Klärung! Hier ist eine angepasste `README.md`, die deutlich macht, dass der Name des Template-Ordners zwar `hotel` ist, aber die generierte Haupt-HTML-Datei in `index.html` umbenannt werden sollte, falls diese Datei als Startseite verwendet werden soll.
+
+---
+
 # CipherCore Website Generator
 
 ## Überblick
 
-Dieses Projekt ist ein CipherCore Website Generator, der es Benutzern ermöglicht, maßgeschneiderte HTML-, CSS- und JavaScript-Dateien für eine Website zu erstellen. Das Programm bietet eine grafische Benutzeroberfläche (GUI) zur Konfiguration verschiedener Bereiche der Website, einschließlich Kopfbereich, Seitenmenü, Hauptinhalt und Fußbereich.
+Dieses Projekt ist ein **CipherCore Website Generator**, der es Benutzern ermöglicht, maßgeschneiderte HTML-, CSS- und JavaScript-Dateien für eine Website zu erstellen. Das Programm bietet eine grafische Benutzeroberfläche (GUI) zur Konfiguration verschiedener Bereiche der Website, einschließlich Kopfbereich, Seitenmenü, Hauptinhalt und Fußbereich.
 
 ## Inhaltsverzeichnis
 
@@ -17,12 +21,11 @@ Dieses Projekt ist ein CipherCore Website Generator, der es Benutzern ermöglich
 
 ## Features
 
-- **Kopfbereich**: Konfiguration von Hintergrundfarbe, Textfarbe, Schriftart, Schriftgröße und Textausrichtung. Vor dem Übernehmen der Änderungen kann eine Vorschau in einem Webview-Fenster angezeigt werden.
-- **Seitenmenü**: Konfiguration von Hintergrundfarbe, Textfarbe, Schriftart, Schriftgröße und Textausrichtung. Vor dem Übernehmen der Änderungen kann eine Vorschau in einem Webview-Fenster angezeigt werden.
-- **Hauptinhalt**: Konfiguration von Hintergrundfarbe, Textfarbe, Schriftart, Schriftgröße und Textausrichtung. Vor dem Übernehmen der Änderungen kann eine Vorschau in einem Webview-Fenster angezeigt werden.
-- **Fußbereich**: Konfiguration von Hintergrundfarbe, Textfarbe, Schriftart, Schriftgröße und Textausrichtung. Vor dem Übernehmen der Änderungen kann eine Vorschau in einem Webview-Fenster angezeigt werden.
-- **Einstellungen speichern und laden**: Speichern und Laden der Konfigurationseinstellungen in einer JSON-Datei. Dies sorgt dafür, dass eigene Templates gespeichert und später wieder geladen werden können.
-- **Template-Generierung**: Erstellung eines vollständigen Templates mit HTML-, CSS- und JavaScript-Dateien basierend auf den Benutzereingaben.
+- **Kopfbereich**: Konfiguration von Hintergrundfarbe, Textfarbe, Schriftart, Schriftgröße und Textausrichtung mit Vorschau im Webview.
+- **Seitenmenü, Hauptinhalt und Fußbereich**: Anpassung dieser Bereiche mit Optionen zur Farbe, Schriftart, Ausrichtung und Schriftgröße, ebenfalls mit Vorschauoptionen.
+- **Einstellungen speichern und laden**: Speichern und Laden der Konfiguration in einer JSON-Datei, um eigene Templates zu speichern und später wieder zu laden.
+- **Automatische Generierung von `nav.json`**: `nav.json` wird basierend auf den Menüeinstellungen erstellt, um die Navigation dynamisch zu steuern.
+- **Template-Generierung**: Automatische Erstellung eines vollständigen Templates mit HTML-, CSS- und JavaScript-Dateien.
 
 ## Installation
 
@@ -52,33 +55,27 @@ Dieses Projekt ist ein CipherCore Website Generator, der es Benutzern ermöglich
     python main.py
     ```
 
-![image](https://github.com/user-attachments/assets/6e38acd7-ef32-4e46-baf2-095a73bc9652)
-
-![image](https://github.com/user-attachments/assets/f48e0d03-5fed-47b9-a657-ce32157e07a9)
-
-![image](https://github.com/user-attachments/assets/da07ea1c-b0d7-4bbe-953d-56aafd1ad1cd)
-
-
-
-
 ## Verwendung
 
-1. Starten Sie das Programm und wählen Sie eine Seitenvorlage aus (`Hotel`, `Business` oder `Real Estate`).
-2. Legen Sie die Anzahl der Menüpunkte und Untermenüpunkte fest und konfigurieren Sie die Namen.
-3. Passen Sie die Farben, Schriftarten und Schriftgrößen an, um ein individuelles Design zu erstellen.
-4. Speichern Sie die Konfiguration oder laden Sie eine vorherige Konfiguration.
-5. Generieren Sie das Template, indem Sie auf „Template erstellen“ klicken. Die Dateien werden im `templates`-Ordner gespeichert.
+1. Starten Sie das Programm und konfigurieren Sie die gewünschten Einstellungen für den Kopfbereich, das Seitenmenü, den Hauptinhalt und den Fußbereich.
+2. Passen Sie die Farben, Schriftarten und Schriftgrößen an, um ein individuelles Design zu erstellen.
+3. Speichern oder laden Sie Konfigurationen über die Schaltflächen im Menü.
+4. Klicken Sie auf **Template erstellen**, um das Template zu generieren. Die Dateien werden im `templates/hotel`-Ordner gespeichert.
+5. Falls die generierte Hauptdatei als Startseite verwendet werden soll, benennen Sie die Datei `hotel.html` in `index.html` um.
 
 ## GUI-Übersicht
 
-Die Benutzeroberfläche bietet folgende Einstellungen:
+Die Benutzeroberfläche bietet folgende Konfigurationsmöglichkeiten:
 
 - **Linke Seite**: Grundlegende Einstellungen für Menütyp, Farben und Schriftarten sowie Schaltflächen zum Speichern und Laden von Konfigurationen.
 - **Rechte Seite**: Eingabefelder für die Namen der Menüpunkte und Untermenüs.
+  
+![Main GUI](https://github.com/user-attachments/assets/6e38acd7-ef32-4e46-baf2-095a73bc9652)
+*Die Hauptoberfläche zur Konfiguration der Template-Einstellungen.*
 
 ## Beispiel für eine generierte Webseite
 
-Die generierten Dateien umfassen HTML, CSS und JavaScript. Hier ist ein Beispiel einer generierten `Hotel`-Vorlage:
+Die generierten Dateien umfassen `hotel.html`, `hotel_styles.css`, `animations.js` und `nav.json`. Hier ist ein Beispiel der generierten `Hotel`-Vorlage:
 
 ```html
 <!DOCTYPE html>
@@ -113,9 +110,29 @@ Die generierten Dateien umfassen HTML, CSS und JavaScript. Hier ist ein Beispiel
 </html>
 ```
 
-## Projektstruktur
+#### Beispielstruktur für `nav.json`
 
-Die Projektstruktur gliedert sich in verschiedene Module für die Generierung von CSS, HTML und JavaScript-Dateien für die einzelnen Vorlagen:
+```json
+{
+  "menuItems": [
+    {
+      "title": "Home",
+      "url": "index.html",
+      "subMenu": []
+    },
+    {
+      "title": "Über uns",
+      "url": "about.html",
+      "subMenu": [
+        { "title": "Unsere Geschichte", "url": "history.html" },
+        { "title": "Unser Team", "url": "team.html" }
+      ]
+    }
+  ]
+}
+```
+
+## Projektstruktur
 
 ```
 ciphercore-website-generator/
@@ -144,17 +161,11 @@ ciphercore-website-generator/
 └── README.md
 ```
 
-### Modulbeschreibung
-
-- **CSS-Module (`css/`)**: Enthält die Dateien zur Generierung der CSS-Stylesheets für verschiedene Seitentypen (`hotel_css.py`, `business_css.py`, etc.).
-- **HTML-Module (`html/`)**: Enthält die HTML-Generierungslogik für die unterschiedlichen Templates.
-- **JavaScript-Module (`js/`)**: Enthält JavaScript-Module, um interaktive Funktionen und Animationen zu integrieren.
-
 ## Häufige Probleme
 
 ### JSON-Formatierungsfehler
 
-- Vergewissern Sie sich, dass die `nav.json`-Datei korrekt formatiert ist. Fehlerhafte Formatierungen können dazu führen, dass Menüs nicht geladen werden.
+- Stellen Sie sicher, dass `nav.json` korrekt formatiert ist. Fehlerhafte Formatierungen können dazu führen, dass Menüs nicht geladen werden.
 
 ### Ungültige Zeichen in Dateinamen
 
@@ -162,7 +173,7 @@ ciphercore-website-generator/
 
 ### Menü wird nicht angezeigt
 
-- Stellen Sie sicher, dass die `nav.json`-Datei korrekt erstellt wurde und dass die `load_menu.js`-Datei verfügbar ist, um die Menüpunkte dynamisch zu laden.
+- Stellen Sie sicher, dass `nav.json` korrekt erstellt wurde und dass `load_menu.js` verfügbar ist, um die Menüpunkte dynamisch zu laden.
 
 ## Lizenz
 
@@ -170,6 +181,8 @@ Dieses Projekt steht unter der MIT-Lizenz. Weitere Informationen finden Sie in d
 
 ## Kontakt
 
-Für Fragen oder Anregungen kontaktieren Sie bitte [Ihren Namen](mailto:ihre-email@example.com).
+Für Fragen oder Anregungen kontaktieren Sie bitte [Ihren Namen](mailto:ralf.kruemmel+python.de).
 
 ---
+
+In dieser Version wird jetzt klar, dass `hotel.html` im `templates/hotel` Ordner gespeichert wird und manuell in `index.html` umbenannt werden sollte, wenn sie als Startseite dienen soll.
