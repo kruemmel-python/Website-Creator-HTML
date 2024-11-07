@@ -1,5 +1,3 @@
-Danke für die Klärung! Hier ist eine angepasste `README.md`, die deutlich macht, dass der Name des Template-Ordners zwar `hotel` ist, aber die generierte Haupt-HTML-Datei in `index.html` umbenannt werden sollte, falls diese Datei als Startseite verwendet werden soll.
-
 ---
 
 # CipherCore Website Generator
