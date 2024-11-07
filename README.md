@@ -181,7 +181,7 @@ Dieses Projekt steht unter der MIT-Lizenz. Weitere Informationen finden Sie in d
 
 ## Kontakt
 
-Für Fragen oder Anregungen kontaktieren Sie bitte [Ihren Namen](mailto:ralf.kruemmel+python.de).
+Für Fragen oder Anregungen kontaktieren Sie bitte [Ralf Krümmel](mailto:ralf.kruemmel+python.de).
 
 ---
 
