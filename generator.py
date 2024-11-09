@@ -40,7 +40,7 @@ def generate_submenu_html(template_name, submenu_name, options):
     </main>
 
     <footer style="background-color: {options['footer_background_color']}; color: {options['footer_text_color']}; font-family: {options['footer_font_family']}; font-size: {options['footer_font_size']}px; padding: 1rem; text-align: {options['footer_text_align']}; margin-top: auto;">
-        <p>&copy; 2023 Hotel. All rights reserved.</p>
+        <p>&copy; 2024 CipherCore. All rights reserved.</p>
     </footer>
 
     <script src="load_menu.js"></script>

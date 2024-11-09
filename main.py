@@ -2,7 +2,7 @@ import json
 import os
 import tkinter as tk
 from tkinter import ttk, colorchooser, filedialog, messagebox
-from generator import generate_template
+from generator import generate_template, generate_submenu_html
 from modules.kopfbereich import open_kopfbereich_gui
 from modules.seitenmenue import open_seitenmenue_gui
 from modules.hauptinhalt import open_hauptinhalt_gui
@@ -10,7 +10,7 @@ from modules.fussbereich import open_fussbereich_gui
 from modules.css.hotel_css import generate_hotel_css
 from modules.html.hotel_html import generate_hotel_html
 from modules.js.hotel_js import generate_hotel_js
-from generator import generate_template, generate_submenu_html
+import unidecode
 
 # Hilfsfunktionen zur Dateierstellung und zum Schreiben von Inhalten
 def create_directory(path):
@@ -19,6 +19,11 @@ def create_directory(path):
 def write_file(path, content):
     with open(path, "w", encoding="utf-8") as file:
         file.write(content)
+
+# Hilfsfunktion zum Normalisieren von Dateinamen
+def normalize_filename(filename):
+    return unidecode.unidecode(filename.replace(' ', '_'))
+
 
 # Funktion zur Hinzufügung neuer Menüeinträge
 def add_menu_entries(menu):
@@ -63,12 +68,12 @@ def generate_template(template_name, options):
 
     # Generiere CSS
     css_content = generate_hotel_css(options["menu_type"], options)
-    css_path = os.path.join(template_folder, f"{template_name}_styles.css")
+    css_path = os.path.join(template_folder, f"{normalize_filename(template_name)}_styles.css")
     write_file(css_path, css_content)
 
     # Generiere Haupt-HTML-Seite
     html_content = generate_hotel_html(options["menu_type"], options["menu_items"], options["menu_names"], options["submenu_names"])
-    html_path = os.path.join(template_folder, f"{template_name}.html")
+    html_path = os.path.join(template_folder, "index.html")
     write_file(html_path, html_content)
 
     # Generiere JavaScript
@@ -80,7 +85,8 @@ def generate_template(template_name, options):
     for i, submenu_list in enumerate(options["submenu_names"]):
         for submenu_name in submenu_list:
             submenu_html_content = generate_submenu_html(template_name, submenu_name, options)
-            submenu_path = os.path.join(template_folder, f"{submenu_name.replace(' ', '_')}.html")
+            normalized_submenu_name = normalize_filename(submenu_name)
+            submenu_path = os.path.join(template_folder, f"{normalized_submenu_name}.html")
             write_file(submenu_path, submenu_html_content)
 
     # Generiere nav.json für das Menü
@@ -88,8 +94,8 @@ def generate_template(template_name, options):
         "menuItems": [
             {
                 "title": options["menu_names"][i],
-                "url": f"{options['menu_names'][i].replace(' ', '_')}.html",
-                "subMenu": [{"title": submenu, "url": f"{submenu.replace(' ', '_')}.html"} for submenu in submenu_list]
+                "url": f"{normalize_filename(options['menu_names'][i])}.html",
+                "subMenu": [{"title": submenu, "url": f"{normalize_filename(submenu)}.html"} for submenu in submenu_list]
             }
             for i, submenu_list in enumerate(options["submenu_names"])
         ]
@@ -191,7 +197,9 @@ def save_settings():
         "header_text_align": header_text_align_var.get(),
         "menu_text_align": menu_text_align_var.get(),
         "content_text_align": content_text_align_var.get(),
-        "footer_text_align": footer_text_align_var.get()
+        "footer_text_align": footer_text_align_var.get(),
+        "menu_names": [menu_name_entry.get() for menu_name_entry in menu_name_entries],
+        "submenu_names": [[submenu_entry.get() for submenu_entry in submenu_entries[i]] for i in range(int(menu_items_var.get()))]
     }
 
     file_path = filedialog.asksaveasfilename(defaultextension=".json", filetypes=[("JSON files", "*.json")])
@@ -231,7 +239,19 @@ def load_settings():
         content_text_align_var.set(options.get("content_text_align", "justify"))
         footer_text_align_var.set(options.get("footer_text_align", "center"))
 
+        # Menü- und Untermenüeinträge aktualisieren
+        menu_names = options.get("menu_names", [])
+        submenu_names = options.get("submenu_names", [])
         update_menu_entries()
+        for i, menu_name_entry in enumerate(menu_name_entries):
+            if i < len(menu_names):
+                menu_name_entry.insert(0, menu_names[i])
+        for i, submenu_list in enumerate(submenu_entries):
+            if i < len(submenu_names):
+                for j, submenu_entry in enumerate(submenu_list):
+                    if j < len(submenu_names[i]):
+                        submenu_entry.insert(0, submenu_names[i][j])
+
         messagebox.showinfo("Einstellungen geladen", "Die Einstellungen wurden erfolgreich geladen.")
 
 # Farbwahl-Funktion
